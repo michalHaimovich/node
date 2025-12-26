@@ -1,5 +1,5 @@
 
-const authors = [
+let authors = [
 
     {
         "id": 10,
@@ -59,7 +59,7 @@ exports.Create = (req, res) => {
 
 exports.Delete = (req, res) => {
     const id = req.params.id;
-    const authorToDelete = authors.find(b => b.id = id);
+    const authorToDelete = authors.find(b => b.id == id);
      if (!authorToDelete) {
         return res.status(404).send("author not exist")
     }
@@ -68,7 +68,7 @@ exports.Delete = (req, res) => {
 
 exports.Update = (req, res) => {
     const id1 = req.params.id;
-    const authorToDelete = authors.find(b => b.id = id1);
+    const authorToDelete = authors.find(b => b.id == id1);
     if (!authorToDelete) {
         return res.status(404).send("author not exist")
     }

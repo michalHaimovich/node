@@ -1,5 +1,5 @@
 
-const books = [
+let books = [
     {
         "id": 1,
         "name": "a"
@@ -59,16 +59,17 @@ exports.Create = (req, res) => {
 
 exports.Delete = (req,res)=>{
     const id = req.params.id;
-    const bookToDelete= books.find(b=>b.id=id);
+    const bookToDelete= books.find(b=>b.id==id);
     if (!bookToDelete) {
         return res.status(404).send("book not exist")
     }
-    books = books.filter(item => item !==  bookToDelete)
+    books = books.filter(item => item !==  bookToDelete);
+    res.status(200).send(books);
 };
 
 exports.Update = (req,res)=>{
     const id1 = req.params.id;
-    const bookToDelete= books.find(b=>b.id=id1);
+    const bookToDelete= books.find(b=>b.id==id1);
     if (!bookToDelete) {
         return res.status(404).send("book not exist")
     }
