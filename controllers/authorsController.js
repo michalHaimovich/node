@@ -23,7 +23,11 @@ let authors = [
     }
 ];
 
-exports.authorsList = (req, res) => {
+exports.authorsList = (req, res,next) => {
+    const num = Math.floor(Math.random() * 11);
+    console.log(num);
+    if(num==9)
+       return res.status(401).send("not good num");
     res.send(authors);
 };
 
@@ -34,7 +38,6 @@ exports.author = (req, res) => {
         return res.status(404).send("author not exist")
     }
     res.status(200).send(foundauthor);
-
 };
 
 
